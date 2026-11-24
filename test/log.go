@@ -1,4 +1,4 @@
-package main
+package test
 
 import (
 	"log"
@@ -10,7 +10,6 @@ func Logger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 
-		// fix: r.Url does not exist; the field is r.URL (capital URL)
 		log.Printf("Started %s %s", r.Method, r.URL.Path)
 
 		next.ServeHTTP(w, r)
